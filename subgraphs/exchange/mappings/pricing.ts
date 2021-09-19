@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
-import { BigDecimal, Address } from "@graphprotocol/graph-ts/index";
+import { Address, BigDecimal } from "@graphprotocol/graph-ts/index";
 import { Pair, Token, Bundle } from "../generated/schema";
-import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from "./utils";
+import { ZERO_BD, factoryContract, ONE_BD } from "./utils";
 
 let WBNB_ADDRESS = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
 let BUSD_WBNB_PAIR = "0x58f876857a02d6762e0101bb5c46a8c1ed44dc16"; // created block 589414
@@ -55,7 +55,7 @@ export function findBnbPerToken(token: Token): BigDecimal {
   // loop through whitelist and check if paired with any
   for (let i = 0; i < WHITELIST.length; ++i) {
     let pairAddress = factoryContract.getPair(Address.fromString(token.id), Address.fromString(WHITELIST[i]));
-    if (pairAddress.toHex() != ADDRESS_ZERO) {
+    if (pairAddress.toHex() != Address.zero()) {
       let pair = Pair.load(pairAddress.toHex());
       if (pair.token0 === token.id && pair.reserveBNB.gt(MINIMUM_LIQUIDITY_THRESHOLD_BNB)) {
         let token1 = Token.load(pair.token1);

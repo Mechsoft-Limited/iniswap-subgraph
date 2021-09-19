@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
+import { Address, BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 import { Collection, NFT, AskOrder, Transaction, User } from "../generated/schema";
 import {
   AskCancel,
@@ -20,7 +20,6 @@ import { fetchCollectionName, fetchCollectionSymbol, fetchTokenURI } from "./uti
 let ZERO_BI = BigInt.fromI32(0);
 let ONE_BI = BigInt.fromI32(1);
 let ZERO_BD = BigDecimal.fromString("0");
-let ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 /**
  * COLLECTION
@@ -145,7 +144,7 @@ export function handleAskCancel(event: AskCancel): void {
   let tokenConcatId = event.params.collection.toHexString() + "-" + event.params.tokenId.toString();
   let token = NFT.load(tokenConcatId);
 
-  token.currentSeller = ZERO_ADDRESS;
+  token.currentSeller = Address.zero();
   token.updatedAt = event.block.timestamp;
   token.currentAskPrice = ZERO_BD;
   token.isTradable = false;
@@ -235,7 +234,7 @@ export function handleTrade(event: Trade): void {
   token.updatedAt = event.block.timestamp;
   token.totalTrades = token.totalTrades.plus(ONE_BI);
   token.currentAskPrice = ZERO_BD;
-  token.currentSeller = ZERO_ADDRESS;
+  token.currentSeller = Address.zero();
   token.isTradable = false;
 
   // 4. Transaction

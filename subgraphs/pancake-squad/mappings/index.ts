@@ -7,7 +7,6 @@ import { fetchName, fetchSymbol, fetchTokenUri } from "./utils/erc-721";
 
 // Constants
 let CONTRACT_ADDRESS = "0x0000000000000000000000000000000000001000";
-let ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 // BigNumber-like references
 let ZERO_BI = BigInt.fromI32(0);
@@ -44,9 +43,7 @@ export function handleTransfer(event: Transfer): void {
     contract.totalOwners = contract.totalOwners.plus(ONE_BI);
     contract.save();
   }
-  from.totalTokens = event.params.from.equals(Address.fromString(ZERO_ADDRESS))
-    ? from.totalTokens
-    : from.totalTokens.minus(ONE_BI);
+  from.totalTokens = event.params.from.equals(Address.zero()) ? from.totalTokens : from.totalTokens.minus(ONE_BI);
   from.totalTransactions = from.totalTransactions.plus(ONE_BI);
   from.updatedAt = event.block.timestamp;
   from.save();
@@ -95,7 +92,7 @@ export function handleTransfer(event: Transfer): void {
     contract.save();
   }
   token.owner = to.id;
-  token.burned = event.params.to.equals(Address.fromString(ZERO_ADDRESS));
+  token.burned = event.params.to.equals(Address.zero());
   token.totalTransactions = token.totalTransactions.plus(ONE_BI);
   token.updatedAt = event.block.timestamp;
   token.save();

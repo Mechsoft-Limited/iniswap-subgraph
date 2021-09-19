@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { BigInt, BigDecimal, store } from "@graphprotocol/graph-ts";
+import { Address, BigInt, BigDecimal, store } from "@graphprotocol/graph-ts";
 import {
   Pair,
   Token,
@@ -13,7 +13,7 @@ import {
 import { Mint, Burn, Swap, Transfer, Sync } from "../generated/templates/Pair/Pair";
 import { updatePairDayData, updateTokenDayData, updatePancakeDayData, updatePairHourData } from "./dayUpdates";
 import { getBnbPriceInUSD, findBnbPerToken, getTrackedVolumeUSD, getTrackedLiquidityUSD } from "./pricing";
-import { convertTokenToDecimal, ADDRESS_ZERO, FACTORY_ADDRESS, ONE_BI, ZERO_BD, BI_18 } from "./utils";
+import { convertTokenToDecimal, FACTORY_ADDRESS, ONE_BI, ZERO_BD, BI_18 } from "./utils";
 
 function isCompleteMint(mintId: string): boolean {
   return MintEvent.load(mintId).sender !== null; // sufficient checks
@@ -21,7 +21,7 @@ function isCompleteMint(mintId: string): boolean {
 
 export function handleTransfer(event: Transfer): void {
   // Initial liquidity.
-  if (event.params.to.toHex() === ADDRESS_ZERO && event.params.value.equals(BigInt.fromI32(1000))) {
+  if (event.params.to.toHex() === Address.zero() && event.params.value.equals(BigInt.fromI32(1000))) {
     return;
   }
 
@@ -44,7 +44,7 @@ export function handleTransfer(event: Transfer): void {
 
   // mints
   let mints = transaction.mints;
-  if (event.params.from.toHex() === ADDRESS_ZERO) {
+  if (event.params.from.toHex() === Address.zero()) {
     // update total supply
     pair.totalSupply = pair.totalSupply.plus(value);
     pair.save();
@@ -94,7 +94,7 @@ export function handleTransfer(event: Transfer): void {
   }
 
   // burn
-  if (event.params.to.toHex() === ADDRESS_ZERO && event.params.from.toHex() === pair.id) {
+  if (event.params.to.toHex() === Address.zero() && event.params.from.toHex() === pair.id) {
     pair.totalSupply = pair.totalSupply.minus(value);
     pair.save();
 
