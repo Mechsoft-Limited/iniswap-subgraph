@@ -17,7 +17,7 @@ export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
 }
 
 export function convertTokenToDecimal(tokenAmount: BigInt, exchangeDecimals: BigInt): BigDecimal {
-  if (exchangeDecimals == ZERO_BI) {
+  if (exchangeDecimals === ZERO_BI) {
     return tokenAmount.toBigDecimal();
   }
   return tokenAmount.toBigDecimal().div(exponentToBigDecimal(exchangeDecimals));

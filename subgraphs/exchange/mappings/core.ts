@@ -21,7 +21,7 @@ function isCompleteMint(mintId: string): boolean {
 
 export function handleTransfer(event: Transfer): void {
   // Initial liquidity.
-  if (event.params.to.toHex() == ADDRESS_ZERO && event.params.value.equals(BigInt.fromI32(1000))) {
+  if (event.params.to.toHex() === ADDRESS_ZERO && event.params.value.equals(BigInt.fromI32(1000))) {
     return;
   }
 
@@ -44,7 +44,7 @@ export function handleTransfer(event: Transfer): void {
 
   // mints
   let mints = transaction.mints;
-  if (event.params.from.toHex() == ADDRESS_ZERO) {
+  if (event.params.from.toHex() === ADDRESS_ZERO) {
     // update total supply
     pair.totalSupply = pair.totalSupply.plus(value);
     pair.save();
@@ -71,7 +71,7 @@ export function handleTransfer(event: Transfer): void {
   }
 
   // case where direct send first on BNB withdrawals
-  if (event.params.to.toHex() == pair.id) {
+  if (event.params.to.toHex() === pair.id) {
     let burns = transaction.burns;
     let burn = new BurnEvent(
       event.transaction.hash.toHex().concat("-").concat(BigInt.fromI32(burns.length).toString())
@@ -94,7 +94,7 @@ export function handleTransfer(event: Transfer): void {
   }
 
   // burn
-  if (event.params.to.toHex() == ADDRESS_ZERO && event.params.from.toHex() == pair.id) {
+  if (event.params.to.toHex() === ADDRESS_ZERO && event.params.from.toHex() === pair.id) {
     pair.totalSupply = pair.totalSupply.minus(value);
     pair.save();
 

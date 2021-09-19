@@ -25,14 +25,14 @@ export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
 }
 
 export function convertTokenToDecimal(tokenAmount: BigInt, exchangeDecimals: BigInt): BigDecimal {
-  if (exchangeDecimals == ZERO_BI) {
+  if (exchangeDecimals === ZERO_BI) {
     return tokenAmount.toBigDecimal();
   }
   return tokenAmount.toBigDecimal().div(exponentToBigDecimal(exchangeDecimals));
 }
 
 export function isNullBnbValue(value: string): boolean {
-  return value == "0x0000000000000000000000000000000000000000000000000000000000000001";
+  return value === "0x0000000000000000000000000000000000000000000000000000000000000001";
 }
 
 export function fetchTokenSymbol(tokenAddress: Address): string {

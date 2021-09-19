@@ -14,7 +14,7 @@ export function updateCollectionDayData(collection: Address, newVolumeinBNB: Big
 
   let collectionDayData = CollectionDayData.load(ID.toString());
 
-  if (collectionDayData == null) {
+  if (collectionDayData === null) {
     collectionDayData = new CollectionDayData(ID.toString());
     collectionDayData.date = dayStartTimestamp;
     collectionDayData.collection = collection.toHexString();
@@ -35,7 +35,7 @@ export function updateMarketPlaceDayData(newVolumeinBNB: BigDecimal, event: ethe
 
   let marketPlaceDayData = MarketPlaceDayData.load(dayID.toString());
 
-  if (marketPlaceDayData == null) {
+  if (marketPlaceDayData === null) {
     marketPlaceDayData = new MarketPlaceDayData(dayID.toString());
     marketPlaceDayData.date = dayStartTimestamp;
     marketPlaceDayData.dailyVolumeBNB = newVolumeinBNB;

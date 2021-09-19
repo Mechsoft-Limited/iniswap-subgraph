@@ -28,7 +28,7 @@ let ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 export function handleCollectionNew(event: CollectionNew): void {
   let collection = Collection.load(event.params.collection.toHex());
-  if (collection == null) {
+  if (collection === null) {
     collection = new Collection(event.params.collection.toHex());
     collection.name = fetchCollectionName(event.params.collection);
     collection.symbol = fetchCollectionSymbol(event.params.collection);
@@ -77,7 +77,7 @@ export function handleCollectionUpdate(event: CollectionUpdate): void {
 export function handleAskNew(event: AskNew): void {
   // 1. User
   let user = User.load(event.params.seller.toHex());
-  if (user == null) {
+  if (user === null) {
     user = new User(event.params.seller.toHex());
     user.numberTokensListed = ONE_BI;
     user.numberTokensPurchased = ZERO_BI;
@@ -100,7 +100,7 @@ export function handleAskNew(event: AskNew): void {
   let tokenConcatId = event.params.collection.toHexString() + "-" + event.params.tokenId.toString();
   let token = NFT.load(tokenConcatId);
 
-  if (token == null) {
+  if (token === null) {
     token = new NFT(tokenConcatId);
     token.tokenId = event.params.tokenId;
     token.collection = collection.id;
@@ -197,7 +197,7 @@ export function handleTrade(event: Trade): void {
   let buyer = User.load(event.params.buyer.toHex());
 
   // Buyer may not exist
-  if (buyer == null) {
+  if (buyer === null) {
     buyer = new User(event.params.buyer.toHex());
     buyer.numberTokensListed = ZERO_BI;
     buyer.numberTokensPurchased = ONE_BI; // 1 token purchased
@@ -270,7 +270,7 @@ export function handleTrade(event: Trade): void {
 export function handleRevenueClaim(event: RevenueClaim): void {
   let user = User.load(event.params.claimer.toHex());
 
-  if (user == null) {
+  if (user === null) {
     user = new User(event.params.claimer.toHex());
     user.numberTokensListed = ZERO_BI;
     user.numberTokensPurchased = ZERO_BI;
