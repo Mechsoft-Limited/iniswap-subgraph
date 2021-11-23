@@ -1,13 +1,13 @@
 {
   "name": "blocks",
-  "description": "PancakeSwap Subgraph",
+  "description": "Iniswap Subgraph",
   "version": "1.0.0",
-  "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
-  "author": "PancakeSwap",
+  "repository": "git@github.com:Mechsoft-limited/iniswap-subgraph.git",
+  "author": "Iniswap",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "codegen": "graph codegen subgraph.yaml",
     "build": "graph build subgraph.yaml",
-    "deploy": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ pancakeswap/blocks subgraph.yaml"
+    "deploy": "graph deploy --product hosted-service --node http://localhost:8020/ --ipfs http://127.0.0.1:5001/ iniswap/blocks subgraph.yaml"
   }
 }
