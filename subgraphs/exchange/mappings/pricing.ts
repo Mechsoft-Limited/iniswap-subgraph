@@ -3,9 +3,9 @@ import { BigDecimal, Address } from "@graphprotocol/graph-ts/index";
 import { Pair, Token, Bundle } from "../generated/schema";
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from "./utils";
 
-let WBNB_ADDRESS = "0xae13d989dac2f0debff460ac112a837c89baa7cd";
-let BUSD_WBNB_PAIR = "0xFe8892600ece79a0B8750d2212e4Fd1E25A82d3D";
-let USDT_WBNB_PAIR = "0xFe8892600ece79a0B8750d2212e4Fd1E25A82d3D";
+let WBNB_ADDRESS = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
+let BUSD_WBNB_PAIR = "0x2DF0Fc6605C1E10DCD3599fb225b2a6e5c55C06d";
+let USDT_WBNB_PAIR = "0x12d7c5E34195fedd437a10Bb6F531FaDC0c27029";
 
 export function getBnbPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
@@ -32,18 +32,18 @@ export function getBnbPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  "0xae13d989dac2f0debff460ac112a837c89baa7cd", // WBNB
-  "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7", // BUSD
-  "0x7ef95a0fee0dd31b22626fa2e10ee6a223f8a684", // USDT
-  // "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d", // USDC
-  // "0x23396cf899ca06c4472205fc903bdb4de249d6fc", // UST
-  "0x8a9424745056Eb399FD19a0EC26A14316684e274", // DAI
+  "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", // WBNB
+  "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56", // BUSD
+  "0x55d398326f99059fF775485246999027B3197955", // USDT
+  "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d", // USDC
+  "0x23396cf899ca06c4472205fc903bdb4de249d6fc", // UST
+  "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3", // DAI
   "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c", // BTCB
-  "0x8babbb98678facc7342735486c851abd7a0d17ca", // WETH
+  "0x2170Ed0880ac9A755fd29B2688956BD959F933F8", // WETH
 ];
 
 // minimum liquidity for price to get tracked
-let MINIMUM_LIQUIDITY_THRESHOLD_BNB = BigDecimal.fromString("10");
+let MINIMUM_LIQUIDITY_THRESHOLD_BNB = BigDecimal.fromString("0");
 
 /**
  * Search through graph to find derived BNB per token.

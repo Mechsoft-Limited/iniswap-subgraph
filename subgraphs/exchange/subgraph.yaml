@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: PancakeSwap is a decentralized protocol for automated token exchange on Binance Smart Chain.
-repository: https://github.com/pancakeswap
+repository: https://github.com/iniswap
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,9 +8,9 @@ dataSources:
     name: Factory
     network: bsc
     source:
-      address: '0xD53c4cf2AB20449CB5E71F8D6B03745fC6360403'
+      address: '0x147382a7A889Ac2dE371ABd1f9C87e1a5F224AD9'
       abi: Factory
-      startBlock: 14194134
+      startBlock: 15077088
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

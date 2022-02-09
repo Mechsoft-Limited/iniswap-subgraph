@@ -6,6 +6,7 @@
   "author": "PancakeSwap",
   "license": "GPL-3.0-or-later",
   "scripts": {
+    
     "codegen": "graph codegen subgraph.yaml",
     "build": "graph build subgraph.yaml",
     "deploy": "graph deploy --product hosted-service --node http://localhost:8020/ --ipfs http://127.0.0.1:5001/ iniswap/smartchef subgraph.yaml"
