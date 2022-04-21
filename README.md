@@ -1,4 +1,4 @@
-# PancakeSwap Subgraph
+<!-- # PancakeSwap Subgraph
 
 TheGraph exposes a GraphQL endpoint to query the events and entities within the Binance Smart Chain and PancakeSwap ecosystem.
 
@@ -46,4 +46,4 @@ For any of the subgraph: `blocks` as `[subgraph]`
 
 4. Run `graph auth --product hosted-service '<ACCESS_TOKEN>'`
 
-5. Deploy via `yarn deploy`.
+5. Deploy via `yarn deploy`. -->

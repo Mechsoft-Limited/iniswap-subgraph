@@ -1,15 +1,15 @@
 {
   "name": "pairs",
-  "description": "IniswapSwap Subgraph",
+  "description": "Iniswap Subgraph",
   "version": "1.0.0",
-  "repository": "git@github.com:pancakeswap/pancake-subgraph.git",
-  "author": "PancakeSwap",
+  "repository": "git@github.com:iniswap/iniswap-subgraph.git",
+  "author": "Iniswap",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "create:graph": " graph create --node http://172.105.244.91:8020/ iniswap/pairs",
 
     "codegen": "graph codegen subgraph.yaml",
     "build": "graph build subgraph.yaml",
-    "deploy": "graph deploy --product hosted-service --node http://172.105.244.91:8020/ --ipfs http://172.105.244.91:5001/ iniswap/pairs subgraph.yaml"
+    "deploy": "graph deploy --product hosted-service iniswap/pairs subgraph.yaml"
   }
 }

@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Track Pairs and Tokens on iniSwap (v2) protocol
+description: Track Pairs and Tokens on iniSwap protocol
 repository: https://github.com/iniswap
 schema:
   file: ./schema.graphql
@@ -8,9 +8,9 @@ dataSources:
     name: Factory
     network: bsc
     source:
-      address: '0x147382a7A889Ac2dE371ABd1f9C87e1a5F224AD9'
+      address: '0x36441d07f64736BF209c3BC80CDBF6B9648Bce36'
       abi: Factory
-      startBlock: 15077088
+      startBlock: 17030379
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
